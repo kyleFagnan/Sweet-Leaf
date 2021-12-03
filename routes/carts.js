@@ -186,6 +186,7 @@ module.exports = (db) => {
     db.query(query, [orderId])
       .then(data => {
         const completed = data.rows[0].completed;
+        const completion_time = data.rows[0].completion_time
         const accepted = data.rows[0].accepted_at;
         const completionTime = data.rows[0].completion_time;
         console.log('completionTime', data.rows[0].completion_time);
