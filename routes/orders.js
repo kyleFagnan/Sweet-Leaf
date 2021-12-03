@@ -70,12 +70,12 @@ module.exports = (db) => {
   });
 
   router.post("/accept/:id", (req, res) => { //if accepted
-    console.log('req.params', req.params);
+
     messageCustomer(req.params.id, req.body.estimated_time)
 
-    const query = `UPDATE orders SET accepted_at = CURRENT_TIMESTAMP
-    WHERE id = $1 AND type = 'order'`;
-    db.query(query, [req.params.id])
+    const query = `UPDATE orders SET accepted_at = CURRENT_TIMESTAMP, completion_time = $1
+    WHERE id = $2 AND type = 'order'`;
+    db.query(query, [req.body.estimated_time, req.params.id])
       .then(data => {
         console.log(data);
         res.redirect("/orders");

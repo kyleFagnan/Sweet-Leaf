@@ -20,7 +20,7 @@ const messageCustomer = (order, number) => {
     .create({
        body: text,
        from: twilioNumber,
-       to: '+16725135317'
+       to: resturantNumber
      })
     .then(message => console.log(message.sid)).catch((err)=>{
       console.log(err.message)
@@ -36,7 +36,7 @@ const messageRestaurant = (orderId) => {
     .create({
        body: text,
        from: twilioNumber,
-       to: '+16725135317'
+       to: resturantNumber
 
      }).catch((err)=>{
        console.log(err.message)
@@ -49,7 +49,7 @@ const messageOrderReady = (orderId) => {
     .create({
        body: text,
        from: twilioNumber,
-       to: '+16725135317'
+       to: resturantNumber
      }).catch((err)=> {
        console.log(err.message)
      })

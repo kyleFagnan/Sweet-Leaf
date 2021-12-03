@@ -187,9 +187,9 @@ module.exports = (db) => {
       .then(data => {
         const completed = data.rows[0].completed;
         const accepted = data.rows[0].accepted_at;
-        console.log(completed);
-        console.log(accepted);
-        res.render('confirmation', { completed, accepted });
+        const completionTime = data.rows[0].completion_time;
+        console.log('completionTime', data.rows[0].completion_time);
+        res.render('confirmation', { completed, accepted, completionTime });
       })
       .catch(err => {
         res
